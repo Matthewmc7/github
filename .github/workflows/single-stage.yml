@@ -1,0 +1,23 @@
+
+# .github/workflows/single-stage.yml
+
+name: Single-Stage
+
+on:
+  push:
+    branches: ['none']
+  pull_request:
+    branches: ['none']
+jobs:
+  Linter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use NodeJS
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: install node packages
+        run: npm install
+      - name: run the linter
+        run: npm run linter
